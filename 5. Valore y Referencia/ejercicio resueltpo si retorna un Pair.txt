@@ -1,0 +1,31 @@
+data class Numeros(var num: Int)
+
+fun main() {
+    var num1 = 10
+    var num2 = 12
+
+    // Paso por valor
+    val resultadoValores = programa1(num1, num2)
+    println("Después de programa1 (paso por valor):")
+    println("Original num1: $num1, Original num2: $num2")
+    println("Nuevo num1: ${resultadoValores.first}, Nuevo num2: ${resultadoValores.second}")
+
+    // Paso por referencia
+    val numeroObj1 = Numeros(num1)
+    val numeroObj2 = Numeros(num2)
+
+    programa2(numeroObj1, numeroObj2) // Modifica los valores dentro de los objetos
+    println("Después de programa2 (paso por referencia):")
+    println("Original num1: $num1, Original num2: $num2") // Se mantienen iguales
+    println("Nuevo num1: ${numeroObj1.num}, Nuevo num2: ${numeroObj2.num}") // Intercambiados
+}
+
+fun programa1(numero1: Int, numero2: Int): Pair<Int, Int> {
+    return Pair(numero2, numero1) // Intercambia los valores
+}
+
+fun programa2(num5: Numeros, num6: Numeros) {
+    val temp = num5.num
+    num5.num = num6.num
+    num6.num = temp
+}

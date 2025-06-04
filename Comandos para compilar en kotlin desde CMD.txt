@@ -1,0 +1,4 @@
+kotlinc archivo.kt -include-runtime -d archivo.jar
+
+
+java -jar archivo.jar

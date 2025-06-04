@@ -1,0 +1,108 @@
+/*
+ * EJERCICIO:
+ * - Muestra ejemplos de asignación de variables "por valor" y "por referencia", según
+ *   su tipo de dato.
+ * - Muestra ejemplos de funciones con variables que se les pasan "por valor" y 
+ *   "por referencia", y cómo se comportan en cada caso en el momento de ser modificadas.
+ * (Entender estos conceptos es algo esencial en la gran mayoría de lenguajes)
+ *
+ * DIFICULTAD EXTRA (opcional):
+ * Crea dos programas que reciban dos parámetros (cada uno) definidos como
+ * variables anteriormente.
+ * - Cada programa recibe, en un caso, dos parámetros por valor, y en otro caso, por referencia.
+ *   Estos parámetros los intercambia entre ellos en su interior, los retorna, y su retorno
+ *   se asigna a dos variables diferentes a las originales. A continuación, imprime
+ *   el valor de las variables originales y las nuevas, comprobando que se ha invertido
+ *   su valor en las segundas.
+ *   Comprueba también que se ha conservado el valor original en las primeras.
+ */
+
+
+En Kotlin, los conceptos de asignación por valor y por referencia dependen del tipo de dato:
+
+Por valor: Se aplica a los tipos primitivos e inmutables, como Int, Double, Boolean, etc. Cuando asignamos una variable a otra, se copia su valor.
+
+Por referencia: Se aplica a los objetos y colecciones mutables. La variable almacena una referencia al objeto en memoria, por lo que al modificarlo desde otra variable que apunta a él, el cambio es visible en ambas.
+
+
+🔹 Ejemplo de asignación "por valor"
+
+fun main() {
+    var a = 10
+    var b = a  // Se copia el valor de 'a' en 'b'
+
+    b += 5 // Modificamos 'b', pero 'a' no cambia
+
+    println("a: $a") // 10
+    println("b: $b") // 15
+}
+
+
+
+🔹 Ejemplo de asignación "por referencia"
+
+data class Persona(var nombre: String)
+
+fun main() {
+    val persona1 = Persona("Juan")
+    val persona2 = persona1 // Se copia la referencia, no el objeto
+
+    persona2.nombre = "Carlos" // Modificamos 'persona2', pero afecta a 'persona1'
+
+    println("persona1: ${persona1.nombre}") // Carlos
+    println("persona2: ${persona2.nombre}") // Carlos
+}
+
+📌 Aquí, persona1 y persona2 apuntan al mismo objeto en memoria, por lo que cambiar uno afecta al otro.
+
+
+🔹 Paso de variables "por valor" en funciones
+Los tipos primitivos y datos inmutables se pasan por valor:
+
+fun modificarNumero(num: Int) {
+    var numCopia = num
+    numCopia += 10
+    println("Dentro de la función: $numCopia") // 20
+}
+
+fun main() {
+    val numero = 10
+    modificarNumero(numero)
+    println("Fuera de la función: $numero") // 10 (No se modifica)
+}
+
+
+🔹 Paso de variables "por referencia" en funciones
+
+Los objetos mutables pueden ser modificados dentro de una función:
+
+data class Coche(var marca: String)
+
+fun cambiarMarca(coche: Coche) {
+    coche.marca = "Toyota" // Modificamos el mismo objeto
+}
+
+fun main() {
+    val miCoche = Coche("Ford")
+    cambiarMarca(miCoche)
+    println("Marca después de la función: ${miCoche.marca}") // Toyota
+}
+
+
+🔹 Paso de referencia inmutable
+
+Si usamos val, la referencia no puede cambiar, pero los valores internos del objeto sí.
+
+fun cambiarLista(lista: MutableList<Int>) {
+    lista.add(4) // Modifica la lista original
+}
+
+fun main() {
+    val numeros = mutableListOf(1, 2, 3)
+    cambiarLista(numeros)
+    println(numeros) // [1, 2, 3, 4]
+}
+
+
+
+

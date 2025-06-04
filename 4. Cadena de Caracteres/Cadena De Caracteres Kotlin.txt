@@ -1,0 +1,147 @@
+1. Acceso a caracteres específicos
+Puedes acceder a un carácter de una cadena usando índices:
+
+val texto = "Kotlin"
+println(texto[0]) // K
+println(texto[5]) // n
+
+
+2. Obtener subcadenas
+
+val texto = "Hola, Mundo"
+println(texto.substring(0, 4)) // "Hola"
+println(texto.substringAfter(',')) // " Mundo"
+println(texto.substringBefore(',')) // "Hola"
+
+
+
+🔹 3. Longitud de una cadena
+
+val texto = "Kotlin"
+println(texto.length) // 6
+
+
+
+🔹 4. Concatenación de cadenas
+
+val parte1 = "Hola"
+val parte2 = "Mundo"
+val resultado = parte1 + ", " + parte2 + "!"
+println(resultado) // "Hola, Mundo!"
+
+También con plus:
+
+println(parte1.plus(", ").plus(parte2).plus("!")) // "Hola, Mundo!"
+
+
+
+
+🔹 5. Repetir cadenas
+
+val texto = "Hola "
+println(texto.repeat(3)) // "Hola Hola Hola "
+
+
+
+🔹 6. Recorrer una cadena (iterar caracteres)
+
+
+val texto = "Kotlin"
+for (c in texto) {
+    print("$c ") // K o t l i n
+}
+
+
+🔹 7. Convertir a mayúsculas y minúsculas
+
+val texto = "Kotlin"
+println(texto.uppercase()) // "KOTLIN"
+println(texto.lowercase()) // "kotlin"
+
+
+🔹 8. Reemplazo de caracteres o palabras
+
+val texto = "Hola Mundo"
+println(texto.replace("Mundo", "Kotlin")) // "Hola Kotlin"
+println(texto.replace('o', '0')) // "H0la Mund0"
+	
+
+🔹 9. División de cadenas
+
+val texto = "Rojo,Azul,Verde"
+val colores = texto.split(",")
+println(colores) // [Rojo, Azul, Verde]
+
+
+🔹 10. Unión de cadenas
+
+val lista = listOf("Rojo", "Azul", "Verde")
+println(lista.joinToString("-")) // "Rojo-Azul-Verde"
+
+
+🔹 11. Interpolación de cadenas
+
+val nombre = "Kotlin"
+val version = 1.9
+println("Estoy aprendiendo $nombre versión $version")
+// "Estoy aprendiendo Kotlin versión 1.9"
+
+
+🔹 12. Verificación de contenido
+
+val texto = "Aprendiendo Kotlin"
+println(texto.contains("Kotlin")) // true
+println(texto.startsWith("Apre")) // true
+println(texto.endsWith("Kotlin")) // true
+
+🔹 13. Eliminar espacios en blanco
+val texto = "   Hola Mundo   "
+println(texto.trim()) // "Hola Mundo"
+println(texto.trimStart()) // "Hola Mundo   "
+println(texto.trimEnd()) // "   Hola Mundo"
+
+
+🔹 14. Comparación de cadenas
+
+val texto1 = "kotlin"
+val texto2 = "KOTLIN"
+println(texto1 == texto2) // false
+println(texto1.equals(texto2, ignoreCase = true)) // true
+
+
+
+🔹 15. Verificar si una cadena está vacía o en blanco
+
+val texto1 = ""
+val texto2 = "   "
+println(texto1.isEmpty()) // true
+println(texto2.isBlank()) // true
+
+
+🔹 16. Convertir otros tipos a cadena
+
+val numero = 42
+val booleano = true
+println(numero.toString()) // "42"
+println(booleano.toString()) // "true"
+
+
+🔹 17. Extraer caracteres únicos (eliminar duplicados)
+
+val texto = "banana"
+println(texto.toSet()) // [b, a, n]
+
+
+
+18. revertir una cadena de texto 
+
+
+fun main() {
+    val texto = "Hola Mundo"
+    val textoInvertido = texto.reversed()
+    println(textoInvertido)  // "odnuM aloH"
+}
+
+
+
+

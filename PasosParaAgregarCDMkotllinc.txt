@@ -1,0 +1,22 @@
+https://kotlinlang.org/docs/command-line.html
+
+en ese enlace podemos seguir los pasos.
+
+Nos envía la version correspondiente 
+https://github.com/JetBrains/kotlin/releases/tag/v2.1.10
+
+descargamos tipo zip extraemos en una ruta C:
+
+2 Propiedades del sistema desde la carpeta Equipo
+
+3 Configuración Avanzada del sistema
+
+4 Variables de entorno 
+
+5 Variables de Usuario para usuario en el apartado Path 
+
+6 Editar
+
+7 Nuevo y agregamos la ruta de la carpeta bin
+
+8 para comprobar en cmd ingresamos kotlinc -version

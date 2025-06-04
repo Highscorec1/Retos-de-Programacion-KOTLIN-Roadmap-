@@ -1,0 +1,23 @@
+fun main() {
+    val num1 = 10
+    val num2 = 12
+
+    val resultado = programa1(num1, num2)
+
+    println("Resultado: $resultado") //si imprimo directamente lo que nos retorna la funcion imprime el espacio en memoria ocupado
+    
+    println("Resultado: ${resultado.contentToString()}") //por ello se convierte a cadena de texto para que pueda imprimir por consola
+
+    println("Resultado 1: ${resultado[0]}") // tambien puedo acceder a la array para imprimir lo que se encuentre en sus posiciones
+    println("Resultado 2: ${resultado[1]}")
+}
+
+fun programa1(numero1: Int = 0, numero2: Int = 0): Array<Int> {
+    println(numero1)
+    println(numero2)
+
+    val numero3 = numero1 * 10
+    val numero4 = numero2 * 10
+
+    return arrayOf(numero3, numero4) // ✅ Usar arrayOf para devolver un array
+}
