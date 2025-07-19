@@ -1,0 +1,39 @@
+✅ ¿Qué es null en Kotlin?
+null representa la ausencia de valor.
+En Kotlin, una variable solo puede contener null si su tipo está marcado como nullable (con ?).
+
+🔹 Definición:
+null es un valor especial que indica que no hay ningún dato asignado a una variable.
+
+🧪 Ejemplo:
+kotlin
+Copy
+Edit
+var nombre: String? = null  // Esto es válido
+nombre no contiene ninguna cadena.
+
+Si intentás acceder a nombre.length, dará error a menos que verifiques que no es null.
+
+✅ ¿Qué es un valor vacío ("" o lista vacía) en Kotlin?
+Un valor vacío significa que hay un valor asignado, pero su contenido está vacío (sin caracteres o sin elementos).
+
+🔹 Definición:
+Un valor vacío es un dato válido, pero que no contiene información útil. No es null, es un objeto existente con "nada dentro".
+
+🧪 Ejemplos:
+kotlin
+Copy
+Edit
+val texto: String = ""             // Cadena vacía
+val numeros: List<Int> = listOf()  // Lista vacía
+texto es un String válido, pero no tiene caracteres.
+
+numeros es una lista existente, pero sin elementos.
+
+📌 Diferencias clave
+Concepto	¿Existe el valor?	¿Tiene contenido?	Necesita ?
+null	❌ No	❌ No	✅ Sí
+""	✅ Sí	❌ No	❌ No
+"Hola"	✅ Sí	✅ Sí	❌ No
+
+https://pl.kotl.in/dlRDoXDes

@@ -1,0 +1,115 @@
+/* 
+* EJERCICIO:
+ * - Muestra ejemplos de creación de todas las estructuras soportadas por defecto
+ *   en tu lenguaje.
+ * - Utiliza operaciones de inserción, borrado, actualización y ordenación.
+ */
+
+//1. Listas (List, MutableList)
+
+fun listas() {
+    val listaInmutable = listOf("A", "B", "C")         // No se puede modificar
+    val listaMutable = mutableListOf("X", "Y", "Z")    // Se puede modificar
+
+    // Inserción
+    listaMutable.add("W")
+
+    // Borrado
+    listaMutable.remove("Y")
+
+    // Actualización
+    listaMutable[0] = "NuevoX"
+
+    // Ordenación
+    listaMutable.sort()
+
+    println("Lista Mutable: $listaMutable")
+}
+
+//2. Conjuntos (Set, MutableSet)
+fun conjuntos() {
+    val conjuntoInmutable = setOf(3, 1, 2)               // No se puede modificar
+    val conjuntoMutable = mutableSetOf(5, 4, 2)
+
+    // Inserción
+    conjuntoMutable.add(6)
+
+    // Borrado
+    conjuntoMutable.remove(4)
+
+    // No se actualiza por índice, pero podemos eliminar y volver a insertar
+    conjuntoMutable.remove(2)
+    conjuntoMutable.add(7)
+
+    // Ordenación (convertir a lista)
+    val conjuntoOrdenado = conjuntoMutable.sorted()
+
+    println("Conjunto Mutable: $conjuntoMutable")
+    println("Conjunto Ordenado: $conjuntoOrdenado")
+}
+
+
+//3. Mapas (Map, MutableMap)
+
+fun mapas() {
+    val mapaInmutable = mapOf("a" to 1, "b" to 2)
+    val mapaMutable = mutableMapOf("x" to 10, "y" to 20)
+
+    // Inserción
+    mapaMutable["z"] = 30
+
+    // Borrado
+    mapaMutable.remove("x")
+
+    // Actualización
+    mapaMutable["y"] = 25
+
+    // Ordenación por clave
+    val mapaOrdenado = mapaMutable.toSortedMap()
+
+    println("Mapa Mutable: $mapaMutable")
+    println("Mapa Ordenado: $mapaOrdenado")
+}
+
+
+//4.  Arrays (Array)
+
+	fun arrays() {
+    val array = arrayOf(3, 1, 4)
+
+    // Inserción (no es posible cambiar el tamaño de un array fijo, usar listas si es necesario)
+
+    // Actualización
+    array[0] = 10
+
+    // Ordenación
+    array.sort()
+
+    println("Array: ${array.joinToString()}")
+}
+
+//5. Uso Combinado
+
+
+fun principal() {
+    println("== Listas ==")
+    listas()
+
+    println("\n== Conjuntos ==")
+    conjuntos()
+
+    println("\n== Mapas ==")
+    mapas()
+
+    println("\n== Arrays ==")
+    arrays()
+}
+
+fun main() {
+    principal()
+}
+
+
+//https://pl.kotl.in/mzFMK4ky1
+
+

@@ -1,0 +1,8 @@
+Estructura,Mutabilidad,Duplicados,Orden,Acceso por índice,Cuándo usarla
+List,Inmutable,Sí,Sí,Sí,Lista fija y ordenada que no cambiará.
+MutableList,Mutable,Sí,Sí,Sí,Lista ordenada con inserciones/borrados frecuentes.
+Set,Inmutable,No,No,No,Colección sin duplicados y sin modificaciones.
+MutableSet,Mutable,No,No,No,Colección única que cambiará durante la ejecución.
+Map,Inmutable,Claves únicas,No,Acceso por clave,"Pares clave-valor fijos, como configuración."
+MutableMap,Mutable,Claves únicas,No,Acceso por clave,"Pares clave-valor modificables, como un caché."
+Array,Mutable (tamaño fijo),Sí,Sí,Sí,"Datos homogéneos, tamaño fijo, acceso rápido."

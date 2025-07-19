@@ -1,0 +1,217 @@
+/*
+ * EJERCICIO:
+ * - Crea ejemplos de funciones básicas que representen las diferentes
+ *   posibilidades del lenguaje:
+ *   Sin parámetros ni retorno, con uno o varios parámetros, con retorno...
+ * - Comprueba si puedes crear funciones dentro de funciones.
+ * - Utiliza algún ejemplo de funciones ya creadas en el lenguaje.
+ * - Pon a prueba el concepto de variable LOCAL y GLOBAL.
+ * - Debes hacer print por consola del resultado de todos los ejemplos.
+ *   (y tener en cuenta que cada lenguaje puede poseer más o menos posibilidades)
+ *
+ * DIFICULTAD EXTRA (opcional):
+ * Crea una función que reciba dos parámetros de tipo cadena de texto y retorne un número.
+ * - La función imprime todos los números del 1 al 100. Teniendo en cuenta que:
+ *   - Si el número es múltiplo de 3, muestra la cadena de texto del primer parámetro.
+ *   - Si el número es múltiplo de 5, muestra la cadena de texto del segundo parámetro.
+ *   - Si el número es múltiplo de 3 y de 5, muestra las dos cadenas de texto concatenadas.
+ *   - La función retorna el número de veces que se ha impreso el número en lugar de los textos.
+ *
+ * Presta especial atención a la sintaxis que debes utilizar en cada uno de los casos.
+ * Cada lenguaje sigue una convenciones que debes de respetar para que el código se entienda.
+ */
+
+
+// Variable global que actúa como contador
+var contador = 0
+
+// Esta es una variable global, está fuera de cualquier función y se puede acceder desde todas.
+var mensajeGlobal = "Soy una variable global"
+
+
+
+fun main(){
+
+	//1. Función si parámetro ni retorno 
+    mostrarSaludo()
+
+	//2. Función con un parámetro
+    saludar("Highscore") //El texto Highscore es el argumento.
+
+	//3. Función con multiples parámetros
+    sumar(10, 25) //El 10 y 25 es el argumento.
+
+	
+    //4. Función con retorno
+    // Guardamos el valor que retorna la función en una variable y lo mostramos.
+	val resultado = multiplicar(6, 7)
+	println("El resultado de la multiplicación es: $resultado")
+
+
+    //5. Función dentro de otra función (función anidada)
+	operacionAvanzada(20, 8)
+    
+    //6. Uso de funciones propias del lenguaje(funciones built-in)
+    builtInFun()
+    
+    //7. Variable locales y globales
+    mostrarMensaje()
+	println("Fuera de la función: $mensajeGlobal")
+    
+    //8. Modificar una variable global desde una función
+    incrementar()
+	println("Contador fuera de la función: $contador")
+    
+    //9. Funcion Recursiva
+    val fact = factorial(5)
+	println("El factorial de 5 es: $fact")
+    
+	//10. Función Lambda (anónima)
+    lambdaAnonima()
+    
+    //11. Función de extensión
+    usarExtension()
+
+}
+
+
+// ----------------------------------------------
+// FUNCIONES BÁSICAS
+// ----------------------------------------------
+
+
+
+// Esta función no recibe ningún valor y simplemente imprime un saludo en consola.
+fun mostrarSaludo() {
+
+    println("Hola Highscore, ¡bienvenido al mundo Kotlin!")
+}
+
+
+// Esta función recibe un nombre como parámetro y lo usa para personalizar el saludo.
+fun saludar(nombre: String) {
+    println("¡Hola $nombre!")
+}
+
+
+// Esta función recibe dos números enteros, los suma e imprime el resultado.
+fun sumar(a: Int, b: Int) {
+    println("La suma de $a y $b es ${a + b}")
+}
+
+
+// Esta función multiplica dos números enteros y devuelve el resultado.
+fun multiplicar(x: Int, y: Int): Int {
+    return x * y
+}
+
+
+
+
+// Una función puede contener otra dentro. Aquí se define una función `resta` dentro de `operacionAvanzada`.
+fun operacionAvanzada(a: Int, b: Int) {
+    // Esta función interna solo es accesible dentro de `operacionAvanzada`
+    fun resta(x: Int, y: Int): Int {
+        return x - y
+    }
+
+    println("La resta interna es: ${resta(a, b)}")
+}
+
+
+
+
+// Kotlin tiene muchas funciones listas para usar. Aquí usamos algunas con listas de números.
+
+fun builtInFun(){
+    
+    val numeros = listOf(4, 2, 9, 1)
+
+    println("Lista original: $numeros")           // Muestra la lista tal cual
+	println("Máximo: ${numeros.maxOrNull()}")     // Devuelve el número más alto
+	println("Mínimo: ${numeros.minOrNull()}")     // Devuelve el número más bajo
+	println("Ordenados: ${numeros.sorted()}")     // Devuelve una nueva lista ordenada
+    
+    
+}
+
+
+
+fun mostrarMensaje() {
+    // Esta es una variable local, solo existe dentro de esta función.
+    val mensajeLocal = "Soy una variable local"
+    
+    println("Dentro de la función: $mensajeLocal")
+}
+
+
+
+fun incrementar() {
+    // Aumentamos el valor del contador global en 1
+    contador++
+    println("Contador actualizado dentro de la función: $contador")
+}
+
+
+
+
+// ----------------------------------------------
+// FUNCIONES AVANZADAS
+// ----------------------------------------------
+
+
+// Esta función calcula el factorial de un número usando recursión.
+// Ej: factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
+
+fun factorial(n: Int): Int {
+    
+    return if (n == 0 || n == 1) {
+        1
+    } else {
+        n * factorial(n - 1) // Llamada recursiva
+    }
+}
+
+
+//Funcion Lambda (anonima)
+fun lambdaAnonima(){
+    
+    // Lista original
+val numeros = listOf(1, 2, 3, 4, 5)
+
+// Lambda que multiplica por 2 cada número de la lista
+val duplicados = numeros.map { numero -> numero * 2 }
+
+println("Lista duplicada: $duplicados")
+
+}
+
+
+
+// ----------------------------------------------
+// Función de extensión
+// ----------------------------------------------
+
+// Creamos una función de extensión para el tipo Int
+// Esta función devuelve true si el número es par
+fun Int.esPar(): Boolean {
+    return this % 2 == 0
+}
+
+// También podríamos crear otra para saber si es impar
+fun Int.esImpar(): Boolean {
+    return this % 2 != 0
+}
+
+fun usarExtension() {
+    val numero = 7
+
+    println("¿El número $numero es par? ${numero.esPar()}")
+    println("¿El número $numero es impar? ${numero.esImpar()}")
+}
+
+
+// ----------------------------------------------
+// Parametros vacios o nulos
+// ----------------------------------------------
+//Lo veremos en el ultimo problema
